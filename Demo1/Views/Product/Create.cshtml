@@ -1,0 +1,90 @@
+﻿@model Product
+
+<form method="post" asp-action="Create">
+    <div class="border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-info"> Add Product</h2>
+        </div>
+
+        <div class="row">
+
+            <div class="col-8">
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Name"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Description"></label>
+                    </div>
+                    <div class="col-8">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Stock"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Stock" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="Price"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Price" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="ImageUrl"></label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="ImageUrl" class="form-control" />
+                        <span asp-validation-for="ImageUrl" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="row form-group">
+                    <div class="col-4">
+                        <label asp-for="CategoryId"></label>
+                    </div>
+                    <div class="col-8">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                            --Chọn--
+                            <span class="caret"></span>
+                        </button>
+                    </div>
+                </div>
+
+
+                <div class="row form-group">
+                    <div class="col">
+                        <input type="submit" value="Submit" class="btn btn-info" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-success">Back</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>
+@section ScriptsValidate {
+    @{
+        <partial name="_ValidationScriptsPartial" />}
+}

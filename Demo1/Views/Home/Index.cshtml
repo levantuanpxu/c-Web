@@ -1,6 +1,4 @@
-﻿
-<main>
-
+﻿@model HomeIndexVM
     <!-- slider Area Start-->
     <div class="slider-area position-relative">
         <div class="slider-active dot-style">
@@ -10,13 +8,19 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-10">
                             <div class="hero__caption">
-                                <h1 data-animation="fadeInUp" data-delay=".2s">Environment</h1>
-                                <P data-animation="fadeInUp" data-delay=".4s">Provide us a green and healthy life<br> we need to protect </P>
-                                <!-- Hero-btn -->
-                                <div class="hero__btn">
-                                    <a href="industries.html" class="hero-btn mb-10" data-animation="fadeInUp" data-delay=".8s">Join Us Now</a>
+                                @foreach (var product in Model.Categories)
+                                {
+                                    <h1 data-animation="fadeInUp" data-delay=".2s">@product.CategoryName</h1>
+                                }
+                                @foreach (var product in Model.Products)
+                                {
+                                    <P data-animation="fadeInUp" data-delay=".4s">@product.Description </P>
+                                    <!-- Hero-btn -->
+                                    <div class="hero__btn">
+                                        <a href="#" class="hero-btn mb-10" data-animation="fadeInUp" data-delay=".8s">Join Us Now</a>
+                                    </div>
+                                }
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -324,4 +328,19 @@
     </section>
     <!-- Blog Area End -->
 
-</main>
+@section ScriptsValidate {
+    <script>
+        $(document).ready(function () {
+            $(".filter-product-btn").click(function () {
+                let value = $(this).attr('data-filter');
+                if (value == "all") {
+                    $(".filter").show('1000');
+                }
+                else {
+                    $(".filter").not('.' + value).hide('3000');
+                    $(".filter").filter('.' + value).show('3000');
+                }
+            })
+        })
+    </script>
+}
